@@ -1,17 +1,22 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import get_user_model
+from .models import Post, CustomUser
 
-User = get_user_model()
+# from django.contrib.auth.models import User
 
-
-class LoginForm(AuthenticationForm):
-    pass
-
-
-class RegisterForm(UserCreationForm):
+class PostForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ["username", "password1", "password2", "email"]
-  
-    
+        model = Post
+        fields = ['title', 'content', 'image']
+
+class SigninForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'password']
+
+        labels = {'username': '유저아이디', 'password': '비밀번호'}
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'email', 'password',  'phone_number']
+        labels = {'username': '유저아이디', 'email': '이메일 주소', 'password': '비밀번호', 'phone_number': '휴대폰번호'}

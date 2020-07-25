@@ -1,8 +1,13 @@
-# from django.urls import path,include
-# from . import views
+from django.contrib import admin
+from django.urls import path, include
+from . import views 
 
-# urlpatterns = [
-#     path("login", views.login_view, name="login"),
-#     path("logout", views.logout_view, name="logout"),
-#     path('register', views.register_view, name = "register"),
-# ]
+
+from django.conf import settings 
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('signin/', views.signin, name="signin"),
+    path('signup/', views.signup, name="signup"),
+    path('', include('django.contrib.auth.urls')),
+]
