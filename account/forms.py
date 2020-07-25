@@ -12,7 +12,6 @@ class SigninForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ['username', 'password']
-
         labels = {'username': '유저아이디', 'password': '비밀번호'}
 
 class UserForm(forms.ModelForm):
