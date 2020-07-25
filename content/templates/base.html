@@ -35,8 +35,12 @@
           </li>
         </ul>
         <li class="nav-item">
-          <a href="{% url 'signin' %}" class="btn btn-primary my-2">LOGIN</a>
-          <a href="{% url 'signup' %}" class="btn btn-secondary my-2">SignUp</a>
+          {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}" class="btn btn-primary my-2" >LOGOUT</a>
+          {% else %}
+          <a href="{% url 'signin'%}" class="btn btn-primary my-2">LOGIN</a>
+          <a href="{% url 'signup'%}" class="btn btn-secondary my-2">SignUp</a>
+          {% endif %}
         </li>
       </div>
     </nav>
