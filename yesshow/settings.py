@@ -121,6 +121,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    # os.path.join(BASE_DIR,'account','static'),
+]
+
 LOGOUT_REDIRECT_URL = 'signin'
 
 AUTH_USER_MODEL = 'account.CustomUser'

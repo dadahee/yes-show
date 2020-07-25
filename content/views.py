@@ -3,7 +3,7 @@ from .models import *
 
 
 def main(request):
-    pass
+    return render(request,'content/main.html')
 
 def list(request):
     posts = Post.objects.all()
