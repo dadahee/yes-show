@@ -6,12 +6,11 @@
 .text_01 {
     z-index: 1;
     position: absolute;
-    color: white;
+    color: #00153F;
     font-weight: bold;
     font-size: 8vmin;
     margin-left: 7%;
-    margin-top: 17%;
-    src: '../asset/bg_01.png'
+    margin-top: 7%;
 }
 .text_02 {
     position: absolute;
@@ -29,7 +28,7 @@
     margin-top: 92%;
 }
 .bg_01 {
-    position: static;
+    position: relative;
     width: 100%;
 }
 .bg_02 {
