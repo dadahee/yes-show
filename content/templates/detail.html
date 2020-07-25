@@ -1,50 +1,90 @@
 
+{% extends 'base.html' %}
 
-<h1>글 제목 : {{post.title}}</h1>
-<p> 작성자 : {{post.writer}}</p>
-<p> 상태 : {{post.status}}</p>
-<p> 날짜 : {{post.date}}</p>
-<p> 예약 가격 : {{post.reserve_price}}</p>
-<p> 음식 가격 : {{post.food_price}}</p>
-<p> 사람 수 : {{post.peopleone}}</p>
-<p> 글 내용 : {{post.text}}</p>
-
-<a href="{% url 'list' %}">홈으로</a>
-<a href="{% url 'edit' post.id %}">수정</a>
-<a href="{% url 'delete' post.id %}">삭제</a>
+{% block content %}
+<br>
+<div class="container">
+<div class="row">
+    
+    <table class="table table-striped" style="text-align : center; border :1px solid #dddddd">
+        <thead>
+            <tr>
+                <th colspan="3" style="background-color : #1f1c1cd2; text-align:center; color:rgb(255, 255, 255);">양도 글 보기</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="width:20%;">글 제목</td>
+                <td colspan="2">{{post.title}}</td>
+            </tr>
+            <tr>
+                <td>상태</td>
+                <td colspan="2">{{post.status}}</td>
+            </tr>
+            <tr>
+                <td>날짜</td>
+                <td colspan="2">{{post.date}}</td>
+            </tr>
+            <tr>
+                <td>예약가격</td>
+                <td colspan="2">{{post.reserve_price}}</td>
+            </tr>
+            <tr>
+                <td>음식가격</td>
+                <td colspan="2">{{post.food_price}}</td>
+            </tr>
+            <tr>
+                <td>사람 수</td>
+                <td colspan="2">{{post.people}}</td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td colspan="2" style="min-height:200px; text-align : left;">{{post.text}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{% url 'list' %}" class="btn btn-secondary" style="margin-right:5px;">홈으로</a>
+    <a href="{% url 'edit' post.id %}" class="btn btn-secondary" style="margin-right:5px;">수정</a>
+    <a href="{% url 'delete' post.id %}" class="btn btn-secondary" style="margin-right:5px;">삭제</a>
+</div>
+    <br>
 
 
     
+    <div>
 
-
-    <!---------- 시작 ------------->
-    <form action = "{%url 'new_comment' post.id %}" method="POST">
-        {% csrf_token %}
-        <textarea name="text"></textarea>
-        <button type="submit">작성하기</button>
-    </form>
-  
+        <!---------- 시작 ------------->
+        <form action = "{%url 'new_comment' post.id %}" method="POST">
+            {% csrf_token %}
+            <textarea name="text"></textarea>
+            <button type="submit">작성하기</button>
+        </form>
     
+        
 
-    {% if user.is_authenticated %} 
-        {% for comment in comments %}
-            {% if request.user == post.writer or request.user == comment.writer %}
-                <div class = "댓글">
-                    <div class="작성 날짜">{{comment.date}}</div>
-                    <strong>{{comment.writer}}</strong>
-                    <p>{{comment.phone_number}}</p>
-                    <p>{{comment.text|linebreaks}}</p>
+        {% if user.is_authenticated %} 
+            {% for comment in comments %}
+                {% if request.user == post.writer or request.user == comment.writer %}
+                    <div class = "댓글">
+                        <div class="작성 날짜">작성날짜 : {{comment.date}}</div>
+                        <strong>작성자 : {{comment.writer}}</strong>
+                        <p>전화번호 : {{comment.phone_number}}</p>
+                        <p>________댓글_________{{comment.text|linebreaks}}</p>
 
-                    {% if request.user == comment.writer %}
-                    <form action = "{%url 'del_comment' post.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type = "submit" class="btn btn-dark" value="삭제"><br><br>
-                    </form>
-                    {% endif %}
-                </div>
-            {% endif %}
-        {% endfor %}
-    {% else %} 
-        <p>권한이 없습니다.</p>
-    {% endif %}
-    <!---------- 끝 ------------->
+                        {% if request.user == comment.writer %}
+                        <form action = "{%url 'del_comment' post.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type = "submit" class="btn btn-secondary" value="삭제"><br><br>
+                        </form>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% else %} 
+            <p>권한이 없습니다.</p>
+        {% endif %}
+        <!---------- 끝 ------------->
+    </div>
+</div>
+
+    {% endblock %}
