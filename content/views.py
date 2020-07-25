@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 
 def main(request):
-    return render(request,'content/main.html')
+    return render(request,'main.html')
 
 def list(request):
     posts = Post.objects.all()
