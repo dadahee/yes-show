@@ -1,14 +1,15 @@
+
 from django.contrib import admin
 from django.urls import path, include
+from . import views
 import account.urls
 import content.urls
 from . import views
 
-
 urlpatterns = [
-    path('detail/<int:post_id>', views.detail, name="detail"),
+    path('<int:post_id>', views.detail, name="detail"),
     path('new', views.new, name="new"),
-    path('list', views.list_, name="list"),
+    path('list', views.list, name="list"),
     path('create', views.postcreate, name='postcreate'),
     path('update/<int:post_id>',views.postupdate,name="postupdate"),
     path('edit/<int:post_id>', views.edit, name="edit"),
