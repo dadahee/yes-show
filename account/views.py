@@ -35,9 +35,9 @@ def signup(request):
             password=form.cleaned_data['password'],
             phone_number=form.cleaned_data['phone_number'])
             login(request, new_user)
-            return redirect('signin')
+            return redirect('main')
         else:
-            return redirect('signin')
+            return redirect('main')
     else:
         form = UserForm()
         return render(request, 'signup.html', {'form': form})
