@@ -1,64 +1,37 @@
 <!-- hello/templates/postnew.html -->
 
-
-{% extends 'base.html' %}
-
-{% block content %}
-
 <form action="{% url 'postcreate' %}" method="POST">
     {% csrf_token %}
-    <br>
-    <div class="container">
-        <div class="row">
-            <table class="table table-striped" style="text-align : center; border :1px solid #dddddd">
-                <thead>
-                    <tr>
-                        <th colspan="8" style="background-color : #1f1c1cd2; text-align:center; color:rgb(255, 255, 255);">양도하기 양식</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="8"><input type="text" class="form-control" placeholder="글 제목" name="title" id="title" maxlength="50"></td>
-                    </tr>
-                        <td>
-                          <label for="status">상태</label><br>
-                        </td>
-                        <td>
-                          <select name="status" id="status">
-                            <option value="W">양도 대기</option>
-                            <option value="C">양도 완료</option>
-                            <option value="W">양도 진행중</option>
-                          </select>
-                        </td>
-                        <td>
-                          <label for="reserve_price">예약 가격</label><br>
-                        </td>
-                        <td>
-                          <input type="number" name="reserve_price" id="reserve_price" class="form-control" >
-                        </td>
-                        <td>
-                          <label for="food_price">음식 가격</label><br>
-                        </td>
-                        <td>
-                          <input type="number" name="food_price" id="food_price" class="form-control" >
-                        </td>
-                        <td>
-                          <label for="people">사람 수</label><br>
-                        </td>
-                        <td>
-                          <input type="number" name="people" id="people" class="form-control" >
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="8"><textarea type="text" class="form-control" placeholder="글 내용" name="text" maxlength="2048" style="height:350px"></textarea></td>
-                    </tr>
-                </tbody>
-            </table>
-            <input type="submit" value="글쓰기">
-        </div>
+    <div>
+      <label for="title">제목</label><br>
+      <input type="text" name="title" id="title">
     </div>
-    
-    
-  </form>
+    <div>
+      <label for="status">상태</label><br>
+      <select name="status" id="status">
+        <option value="W">양도 대기</option>
+        <option value="C">양도 완료</option>
+        <option value="W">양도 진행중</option>
+      </select>
+    </div>
+    <div>
+      <label for="reserve_price">예약 가격</label><br>
+      <input type="number" name="reserve_price" id="reserve_price">
+    </div>
+    <div>
+      <label for="food_price">음식 가격</label><br>
+      <input type="number" name="food_price" id="food_price">
+    </div>
+    <div>
+      <label for="people">사람 수</label><br>
+      <input type="number" name="people" id="people">
+    </div>
+    <div>
+      <label for="text">글 내용</label><br>
+      <textarea name="text" id="text" cols="30" rows="5"></textarea>
+    </div>
 
-  {% endblock %}
+
+
+    <input type="submit" value="글쓰기">
+  </form>
