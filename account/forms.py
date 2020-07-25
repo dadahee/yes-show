@@ -19,6 +19,4 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ['username', 'email', 'password',  'phone_number']
-
         labels = {'username': '유저아이디', 'email': '이메일 주소', 'password': '비밀번호', 'phone_number': '휴대폰번호'}
-
