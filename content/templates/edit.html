@@ -1,10 +1,10 @@
 <!-- hello/templates/postnew.html -->
 
-<form action="{% url 'postupdate' onepost.id %}" method="POST">
+<form action="{% url 'postupdate' post.id %}" method="POST">
     {% csrf_token %}
     <div>
       <label for="title">제목</label><br>
-      <input type="text" name="title" id="title" value="{{ onepost.title }}">
+      <input type="text" name="title" id="title" value="{{ post.title }}">
     </div>
     <div>
       <label for="status">상태</label><br>
@@ -16,19 +16,19 @@
     </div>
     <div>
       <label for="reserve_price">예약 가격</label><br>
-      <input type="number" name="reserve_price" id="reserve_price" value="{{ onepost.reserve_price }}">
+      <input type="number" name="reserve_price" id="reserve_price" value="{{ post.reserve_price }}">
     </div>
     <div>
       <label for="food_price">음식 가격</label><br>
-      <input type="number" name="food_price" id="food_price" value="{{ onepost.food_price }}">
+      <input type="number" name="food_price" id="food_price" value="{{ post.food_price }}">
     </div>
     <div>
       <label for="people">사람 수</label><br>
-      <input type="number" name="people" id="people" value="{{ onepost.people }}">
+      <input type="number" name="people" id="people" value="{{ post.people }}">
     </div>
     <div>
       <label for="text">글 내용</label><br>
-      <textarea name="text" id="text" cols="30" rows="5">{{onepost.text}}</textarea>
+      <textarea name="text" id="text" cols="30" rows="5">{{post.text}}</textarea>
     </div>
 
 

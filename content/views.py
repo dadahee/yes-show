@@ -37,16 +37,17 @@ def postupdate(request,post_id):
     editpost.people = request.POST['people']
     editpost.text = request.POST['text']
     editpost.save()
-    return redirect('/content/detail/'+str(post_id))
+    return redirect('/content/'+str(post_id))
 
 
 def detail(request,post_id):
-    onepost=get_object_or_404(Post,pk=post_id)
-    return render(request,'detail.html',{'onepost':onepost})
+    post=get_object_or_404(Post,pk=post_id)
+    comments = Comment.objects.filter(post=post)
+    return render(request,'detail.html',{'comments':comments, 'post':post})
 
 def edit(request,post_id):
-    onepost=get_object_or_404(Post,pk=post_id)
-    return render(request,'edit.html',{'onepost':onepost})
+    post=get_object_or_404(Post,pk=post_id)
+    return render(request,'edit.html',{'post':post})
 
 def delete(request,post_id):
     deletepost=get_object_or_404(Post,pk=post_id)
