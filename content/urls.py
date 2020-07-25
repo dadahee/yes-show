@@ -7,6 +7,7 @@ import content.urls
 
 urlpatterns = [
     path('<int:post_id>', views.detail, name="detail"),
+    path('list/', views.list, name="list"),
     path('new/', views.new, name="new"),
     path('edit/<int:post_id>', views.edit, name="edit"),
     path('delete/<int:post_id>', views.delete, name="delete"),
