@@ -1,0 +1,12 @@
+<h1>글 제목 : {{onepost.title}}</h1>
+<p> 작성자 : {{onepost.writer}}</p>
+<p> 상태 : {{onepost.status}}</p>
+<p> 날짜 : {{onepost.date}}</p>
+<p> 예약 가격 : {{onepost.reserve_price}}</p>
+<p> 음식 가격 : {{onepost.food_price}}</p>
+<p> 사람 수 : {{onepost.peopleone}}</p>
+<p> 글 내용 : {{onepost.text}}</p>
+
+<a href="{% url 'list' %}">홈으로</a>
+<a href="{% url 'edit' onepost.id %}">수정</a>
+<a href="{% url 'delete' onepost.id %}">삭제</a>

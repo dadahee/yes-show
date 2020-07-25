@@ -1,0 +1,11 @@
+<h1>예스쇼!</h1>
+<br>
+<a href="{% url 'new'%}">글쓰기</a>
+
+{% for post in posts.all%}
+
+    <h1><a href="{% url 'detail' post.id %}">글 제목 : {{post.title}}</a></h1>
+    <p> 작성자 : {{post.writer}}</p>
+    <p> 날짜 : {{post.date}}</p>
+
+{%endfor%}

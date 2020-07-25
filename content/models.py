@@ -5,13 +5,11 @@ from yesshow import settings
 class Post(models.Model):
     title = models.CharField(max_length=200)
     writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-
     STATUS = (
         ("W", "양도 대기"),
         ("C", "양도 완료"),
         ("P", "양도 진행중"),
     )
-
     status = models.CharField(max_length=100, blank=True, null=True, choices=STATUS)
 
     date = models.DateTimeField(auto_now=True)
