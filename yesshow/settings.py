@@ -121,4 +121,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = "auth.User"
+LOGOUT_REDIRECT_URL = 'signin'
+
+AUTH_USER_MODEL = 'account.CustomUser'
+

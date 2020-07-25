@@ -1,7 +1,9 @@
-from django.contrib import admin
-from django.urls import path
-from . import views
 
+from django.contrib import admin
+from django.urls import path, include
+from . import views
+import account.urls
+import content.urls
 
 urlpatterns = [
     path('<int:post_id>', views.detail, name="detail"),
