@@ -1,4 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 
 {% block content %}
-{% endblock %}
+<div class="bg_01">
+    <div class="text_01">
+        YesShow
+        <br>
+        <p style="font-size: 4vmin;">식당 예약권 양도 중개 서비스</p>
+        <p>
+          <a href="{% url 'new' %}" class="btn btn-primary my-2">예약권 양도하기</a>
+          <a href="{% url 'list' %}" class="btn btn-secondary my-2">전체 예약권 보기</a>
+        </p>
+      </div>
+      <img src="static/img/cook.png" class="bg_01"/>
+  </div>
+
+
+  {% endblock %}
