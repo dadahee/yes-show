@@ -16,7 +16,7 @@
             <form method="POST" action="{% url 'signin' %}">
                 {% csrf_token %}
                 {{ signin_form.as_p }}
-                <button type="button" class="btn btn-primary mt-3">Submit</button>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
             </form>
 
             {% endif %}
